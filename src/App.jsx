@@ -15,12 +15,6 @@ function App() {
       </div>
     </div>
   ));
-  let tags = tags_data.map((tag) => (
-    <li key={tag.id} className='p-2 rounded-xl border border-neutral-300 has-[:checked]:bg-neutral-800 has-[:checked]:text-white'>
-      <input type="checkbox" name={`tag_${tag.id}`} id={`tag_${tag.id}`} className='opacity-0 absolute'/>
-      <label htmlFor={`tag_${tag.id}`}>{tag.title}</label>
-    </li>
-  ));
   return (
     <>
       <header className='w-full px-16 py-3 flex justify-between gap-4 sticky top-0 border border-neutral-300'>
@@ -38,7 +32,7 @@ function App() {
           <span className="material-icons-outlined text-2xl">light_mode</span>
         </div>
       </header>
-      <main className='flex-1 px-16 py-3 flex justify-between gap-2'>
+      <main className='flex-1 px-16 py-3 flex justify-between gap-4'>
         <div className='w-3/4 flex flex-col gap-2'>
           {episodes}
         </div>

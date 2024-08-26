@@ -15,6 +15,7 @@ export let episodes_data = [
         link: 'https://open.spotify.com/episode/7eAOmSr3h2WCvQdaiUWEnJ',
         tags: [],
         wordBank: '',
+        click: 0,
     },
     {
         id: 32,
@@ -23,6 +24,7 @@ export let episodes_data = [
         link: 'https://open.spotify.com/episode/0tVbJxhRh0zciEXHBUiqTZ',
         tags: [],
         wordBank: '',
+        click: 0,
     },
     {
         id: 325,
@@ -31,6 +33,7 @@ export let episodes_data = [
         link: 'https://open.spotify.com/episode/3vAdLAwyZpx9vAeTwkGcks',
         tags: [],
         wordBank: '',
+        click: 0,
     },
     {
         id: 390,
@@ -39,6 +42,7 @@ export let episodes_data = [
         link: 'https://open.spotify.com/episode/170BZDR1trG9Jj15yhp1xb',
         tags: [],
         wordBank: '',
+        click: 0,
     },
 ];
 
@@ -46,29 +50,36 @@ export let tags_data = [
     {
         id: 1,
         title: 'Rigen Normal',
+        click: 0,
     },
     {
         id: 2,
         title: 'Hifdzi Normal',
+        click: 0,
     },
     {
         id: 3,
         title: 'Rispo Normal',
+        click: 0,
     },
     {
         id: 4,
         title: 'Ramadhan',
+        click: 0,
     },
     {
         id: 5,
         title: 'Theater of Mind',
+        click: 0,
     },
     {
         id: 6,
         title: 'Bintang Tamu',
+        click: 0,
     },
     {
         id: 7,
         title: 'Quiz',
+        click: 0,
     },
 ]

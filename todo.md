@@ -7,12 +7,16 @@
 
 # Front (React)
 - [ ] MVP
-    - [ ] Sort
-        - [ ] Asc & Desc
-        - [ ] Episode
-        - [ ] Title
-        - [ ] Trend
-    - [ ] Tags
+    - [v] Sort
+        - [v] FE
+        - [ ] Connect BE
+            - [ ] Asc & Desc
+            - [ ] Episode
+            - [ ] Title
+            - [ ] Trend
+    - [v] Tags
+        - [v] FE
+        - [ ] Connect BE
 - [ ] Dark Mode
 - [ ] Screen Responsive
 - [ ] No Mouse Access
@@ -23,3 +27,7 @@ Get data from API, save additional data locally
 - [ ] Plan
 - [ ] Code
 # Deploy
+
+
+# Next Idea
+- Display tag, sorted by most clicked
