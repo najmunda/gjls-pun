@@ -39,11 +39,11 @@ function SideCards() {
   }
 
   return (
-    <aside className='w-1/4 hidden md:flex flex-col gap-2 sticky top-0'>
+    <aside className='col-span-1 hidden md:flex flex-col gap-2 sticky top-0'>
       <form className="p-3 flex flex-col gap-4 rounded-xl border border-neutral-300">
         {/* Sort */}
         <div className='flex items-center justify-between'>
-          <label htmlFor="sortCard" className='flex items-center gap-2 text-xl font-bold'><span className="material-icons-outlined">sort</span>Sort by</label>
+          <label htmlFor="sortCard" className='flex items-center gap-2 text-xl font-bold'><span className="material-icons-outlined">sort</span>Urutkan berdasar</label>
           <button type="button" onClick={handleSortButton} className='flex items-center gap-1 px-3 py-1 text-sm bg-neutral-100 rounded-xl border-0 focus:ring-0 active:ring-0'>
             <span className="material-icons-outlined text-base">{isSortAsc ? 'trending_up' : 'trending_down'}</span>
             {isSortAsc ? 'Menaik' : 'Menurun'}
@@ -56,23 +56,23 @@ function SideCards() {
         </select>
         {/* Tags */}
         <div className='flex items-center justify-between'>
-          <p className='flex items-center gap-2 text-xl font-bold'><span className="material-icons-outlined">sell</span>Include tags</p>
+          <p className='flex items-center gap-2 text-xl font-bold'><span className="material-icons-outlined">sell</span>Sortir label</p>
           <button type="button" onClick={handleResetButton} className='flex items-center gap-1 px-3 py-1 text-sm bg-neutral-100 rounded-xl border-0 focus:ring-0 active:ring-0'>
             <span className="material-icons-outlined text-base">delete</span>
             Reset
           </button>
         </div>
-        <ul className='flex gap-1 flex-wrap text-xs'>
+        <ul className='flex gap-1 flex-wrap justify-center text-xs'>
           {tagsChecked.map(tag => (
             <li key={tag.id} className='p-2 rounded-xl border border-neutral-300 has-[:checked]:bg-neutral-800 has-[:checked]:text-white'>
               <input onChange={() => {handleTagClick(tag.id, true)}} checked={true} type="checkbox" name={`tag_${tag.id}`} id={`tag_${tag.id}`} className='opacity-0 absolute'/>
-              <label htmlFor={`tag_${tag.id}`}>{`${tag.id} ${tag.title}`}</label>
+              <label htmlFor={`tag_${tag.id}`}>{tag.title}</label>
             </li>
           ))}
           {tags.map(tag => (
             <li key={tag.id} className='p-2 rounded-xl border border-neutral-300 has-[:checked]:bg-neutral-800 has-[:checked]:text-white'>
               <input onChange={() => {handleTagClick(tag.id, false)}} checked={false} type="checkbox" name={`tag_${tag.id}`} id={`tag_${tag.id}`} className='opacity-0 absolute'/>
-              <label htmlFor={`tag_${tag.id}`}>{`${tag.id} ${tag.title}`}</label>
+              <label htmlFor={`tag_${tag.id}`}>{tag.title}</label>
             </li>
           ))}
         </ul>

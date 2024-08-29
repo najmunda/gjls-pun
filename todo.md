@@ -7,6 +7,8 @@
 
 # Front (React)
 - [ ] MVP
+    - [v] Episode Card
+        - [v] Detail
     - [v] Sort
         - [v] FE
         - [ ] Connect BE

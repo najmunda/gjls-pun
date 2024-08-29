@@ -13,8 +13,9 @@ export let episodes_data = [
         title: 'RISPO SAN"E KEPADA ADIKNYA',
         description: '',
         link: 'https://open.spotify.com/episode/7eAOmSr3h2WCvQdaiUWEnJ',
-        tags: [],
-        wordBank: '',
+        tagIds: [],
+        abstract: '',
+        wordsBank: [],
         click: 0,
     },
     {
@@ -22,17 +23,19 @@ export let episodes_data = [
         title: '2020! SELAIN LEDAKAN KELUCUAN, KAMI BISA MEMBERIKAN LEDAKAN LAINNYA!',
         description: '',
         link: 'https://open.spotify.com/episode/0tVbJxhRh0zciEXHBUiqTZ',
-        tags: [],
-        wordBank: '',
+        tagIds: [],
+        abstract: '',
+        wordsBank: [],
         click: 0,
     },
     {
         id: 325,
         title: 'ULANG TAHUN, RISPO MENGHADIAHKAN KATA BRILIAN MERCH GJLS !!!',
-        description: 'Eps 325 dicoba lagi Po, semakin banyak catatan untuk kaos merch itupun yang unik',
+        description: 'Dicoba lagi Po, semakin banyak catatan untuk kaos merch itupun yang unik',
         link: 'https://open.spotify.com/episode/3vAdLAwyZpx9vAeTwkGcks',
-        tags: [],
-        wordBank: '',
+        tagIds: [3],
+        abstract: '',
+        wordsBank: [],
         click: 0,
     },
     {
@@ -40,8 +43,9 @@ export let episodes_data = [
         title: 'DUNIA UMUM, DUNIA UNIVERSAL & KEJADIAN SEBENARNYA',
         description: '',
         link: 'https://open.spotify.com/episode/170BZDR1trG9Jj15yhp1xb',
-        tags: [],
-        wordBank: '',
+        tagIds: [3],
+        abstract: 'Rispo gagal menjadi mood booster untuk Rigen & Hifdzi',
+        wordsBank: ['mood booster', 'moody'],
         click: 0,
     },
 ];
@@ -49,17 +53,17 @@ export let episodes_data = [
 export let tags_data = [
     {
         id: 1,
-        title: 'Rigen Normal',
+        title: 'Main Rigen',
         click: 0,
     },
     {
         id: 2,
-        title: 'Hifdzi Normal',
+        title: 'Main Hifdzi',
         click: 0,
     },
     {
         id: 3,
-        title: 'Rispo Normal',
+        title: 'Main Rispo',
         click: 0,
     },
     {
@@ -80,6 +84,16 @@ export let tags_data = [
     {
         id: 7,
         title: 'Quiz',
+        click: 0,
+    },
+    {
+        id: 8,
+        title: 'Cerita Boong',
+        click: 0,
+    },
+    {
+        id: 9,
+        title: 'Puisi',
         click: 0,
     },
 ]
