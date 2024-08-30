@@ -7,8 +7,11 @@
 
 # Front (React)
 - [ ] MVP
+    - [v] Header
+        - [v] Search Bar
     - [v] Episode Card
         - [v] Detail
+    - [v] Side Card
     - [v] Sort
         - [v] FE
         - [ ] Connect BE
@@ -19,7 +22,7 @@
     - [v] Tags
         - [v] FE
         - [ ] Connect BE
-- [ ] Dark Mode
+- [v] Dark Mode
 - [ ] Screen Responsive
 - [ ] No Mouse Access
 - [ ] Screen Reader Compability

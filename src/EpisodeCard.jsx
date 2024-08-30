@@ -4,7 +4,7 @@ function EpisodeCard({episode, handleDetailButton, cardState}) {
 
   if (cardState == 'open') {
     return (
-      <div className="w-full h-fit p-3 flex flex-col gap-1 relative bg-white rounded-xl border border-neutral-300">
+      <div className="w-full h-fit p-3 flex flex-col gap-1 relative rounded-xl border">
         <div className="flex gap-4 justify-between items-stretch">
           <div>
             <p className="text-xl font-bold">{episode.title}</p>
@@ -26,10 +26,10 @@ function EpisodeCard({episode, handleDetailButton, cardState}) {
         <div>
           <p className='text-lg font-medium'>Kosakata</p>
           {
-            episode.tagIds.length ? (
+            episode.wordsBank.length ? (
               <ul className='flex gap-2'>
                 {episode.wordsBank.map((words, index) => (
-                  <li key={index} className='p-2 rounded-xl border border-neutral-300'>
+                  <li key={index} className='p-2 rounded-xl border'>
                     <p className='text-xs'>{words}</p>
                   </li>
                 ))}
@@ -47,7 +47,7 @@ function EpisodeCard({episode, handleDetailButton, cardState}) {
                 {episode.tagIds.map(tagId => {
                   let tag = tags_data.find(tag => tag.id == tagId);
                   return (
-                    <li key={tag.id} className='p-2 rounded-xl border border-neutral-300'>
+                    <li key={tag.id} className='p-2 rounded-xl border'>
                       <p className='text-xs'>{tag.title}</p>
                     </li>
                   )
@@ -62,7 +62,7 @@ function EpisodeCard({episode, handleDetailButton, cardState}) {
     )
   } else {
     return (
-      <div className="group w-full h-fit p-3 flex justify-between items-stretch gap-4 relative bg-white rounded-xl border border-neutral-300">
+      <div className="group w-full h-fit p-3 flex justify-between items-stretch gap-4 relative rounded-xl border">
         <div className="flex gap-4 items-center overflow-hidden">
           <p className="w-5 text-center">{episode.id}</p>
           <p className="text-xl font-bold truncate">{episode.title}</p>
