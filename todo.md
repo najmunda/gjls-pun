@@ -11,28 +11,43 @@
         - [v] Search Bar
     - [v] Episode Card
         - [v] Detail
+            - [v] Kalau tidak ada episode ?
     - [v] Side Card
     - [v] Sort
         - [v] FE
-        - [ ] Connect BE
-            - [ ] Asc & Desc
-            - [ ] Episode
-            - [ ] Title
-            - [ ] Trend
+        - [v] BE
+            - [v] Sort
+                - [v] Asc & Desc
+                - [v] Select
+                    - [v] Sync URL - UI
+                    - [v] Episode
+                    - [v] Title
     - [v] Tags
         - [v] FE
-        - [ ] Connect BE
+        - [v] BE
+    - [ ] Search
+        - [ ] FE
+            - [v] Try Delete state
+            - [ ] Cancel & autocomplete styling
+            - [v] Sync with sidecard form
+        - [v] Connect BE
 - [v] Dark Mode
 - [ ] Screen Responsive
 - [ ] No Mouse Access
 - [ ] Screen Reader Compability
 
-# Back (Express)
-Get data from API, save additional data locally
-- [ ] Plan
-- [ ] Code
 # Deploy
 
+# Problem
+- Scrollbar occupied space, move button
+
+# Search Criteria
+- Title - str
+- Deskripsi - str
+- Abstrak - str
+- Kosakata - array
 
 # Next Idea
-- Display tag, sorted by most clicked
+- Sorted by most clicked
+- Page for funny word/sentence
+- Fuzzy search (no sorting, yes label)
