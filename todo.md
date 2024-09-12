@@ -13,6 +13,8 @@
         - [v] Detail
             - [v] Kalau tidak ada episode ?
     - [v] Side Card
+        - [v] Hide on mobile
+        - [v] Toggle on mobile
     - [v] Sort
         - [v] FE
         - [v] BE
@@ -25,21 +27,30 @@
     - [v] Tags
         - [v] FE
         - [v] BE
-    - [ ] Search
-        - [ ] FE
+    - [v] Search
+        - [v] FE
             - [v] Try Delete state
-            - [ ] Cancel & autocomplete styling
+            - [v] Cancel & autocomplete styling
             - [v] Sync with sidecard form
-        - [v] Connect BE
+            - [v] Hide on mobile
+            - [v] Toggle on mobile
+            - [ ] Sync sidecard and search
+        - [ ] BE
+            - [ ] /Search path (no sort)
+    - [ ] Contribute Form
+    - [ ] About
 - [v] Dark Mode
-- [ ] Screen Responsive
+- [v] Screen Responsive
 - [ ] No Mouse Access
 - [ ] Screen Reader Compability
 
 # Deploy
 
-# Problem
-- Scrollbar occupied space, move button
+# Pages
+- Index (/)
+    - Aside : Sort and Tags
+- Search (/search)
+    - Aside : Tags
 
 # Search Criteria
 - Title - str
@@ -51,3 +62,4 @@
 - Sorted by most clicked
 - Page for funny word/sentence
 - Fuzzy search (no sorting, yes label)
+- Pagination

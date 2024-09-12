@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 function EpisodeCard({episode, handleDetailButton, cardState}) {
   return cardState == 'open' ? (
-    <div className="w-full h-fit p-3 flex flex-col gap-1 relative rounded-xl border">
+    <div className="w-full h-fit p-3 flex flex-col gap-1 relative border shadow-[3px_3px_black] dark:shadow-[3px_3px_white]">
       <div className="flex gap-4 justify-between items-stretch">
         <div>
           <p className="text-xl font-bold">{episode.title}</p>
@@ -37,13 +37,13 @@ function EpisodeCard({episode, handleDetailButton, cardState}) {
           )
         }
       </div>
-      <div>
+      <div className="flex flex-col gap-1">
         <p className='text-lg font-medium'>Label</p>
         {
           episode.tags.length ? (
             <ul className='flex gap-2'>
               {episode.tags.map((tag, index) => (
-                <li key={index} className='p-2 rounded-xl border'>
+                <li key={index} className='p-2 border'>
                   <p className='text-xs'>{tag}</p>
                 </li>
               ))}
@@ -55,7 +55,7 @@ function EpisodeCard({episode, handleDetailButton, cardState}) {
       </div>
     </div>
   ) : (
-    <div className="group w-full h-fit p-3 flex justify-between items-stretch gap-4 relative rounded-xl border">
+    <div className="group w-full h-fit p-3 flex justify-between items-stretch gap-4 relative border shadow-[3px_3px_black] dark:shadow-[3px_3px_white]">
       <div className="flex gap-4 items-center overflow-hidden">
         <p className="w-5 text-center">{episode.num}</p>
         <p className="text-xl font-bold truncate">{episode.title}</p>

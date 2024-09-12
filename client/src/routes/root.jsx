@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLoaderData, useSubmit } from 'react-router-dom';
 import Header from '../Header.jsx';
 import SideCards from '../SideCards.jsx';
 import EpisodeCard from '../EpisodeCard.jsx';
+import Links from '../Links.jsx';
 
 export async function loader({ request }) {
   //SORT & FILTER
@@ -37,6 +38,11 @@ export default function Root() {
     setCardOpenedId(eps_id);
   }
 
+  const [isSideOpen, setIsSideOpen] = useState(false);
+  function handleSideToggle() {
+    setIsSideOpen(!isSideOpen);
+  }
+
   function handleSubmit(event) {
     const formData = new FormData(document.getElementById('side-form'));
     formData.append('q', document.getElementById('q').value);
@@ -46,8 +52,8 @@ export default function Root() {
 
   return (
     <>
-      <Header handleSubmit={handleSubmit}/>
-      <main className='px-16 py-3 w-full grid grid-cols-3 gap-4'>
+      <Header handleSubmit={handleSubmit} handleSideToggle={handleSideToggle}/>
+      <main className='px-8 sm:px-16 flex-1 py-3 w-full grid grid-cols-3 gap-4 relative'>
         <div className='col-span-3 md:col-span-2 flex flex-col gap-2'>
           {episodes.length ?
             episodes.map(episode => (
@@ -60,8 +66,9 @@ export default function Root() {
             )
           }
         </div>
-        <SideCards handleSubmit={handleSubmit} setCardOpenedId={setCardOpenedId}/>
+        <SideCards isSideOpen={isSideOpen} handleSubmit={handleSubmit} setCardOpenedId={setCardOpenedId}/>
       </main>
+      <Links className='px-8 sm:px-16 py-3 flex col-span-3 md:hidden border-t border-inherit'/>
     </>
   )
 }

@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     const sort = JSON.parse(req.headers.sort);
     const tags = JSON.parse(req.headers.tags);
     if (tags.length) {
-        find[tags] = { $all: tags };
+        find['tags'] = { $all: tags };
     }
     const collection = await db.collection("episodes");
     const results = await collection.find(find).sort(sort).toArray();

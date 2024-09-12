@@ -7,7 +7,11 @@ export default {
     "./src/**/*.{js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      borderWidth: {
+        DEFAULT: '2px',
+      },
+    },
   },
   plugins: [
     formsPlugin,
