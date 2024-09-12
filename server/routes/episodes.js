@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     if (q) {
         find = { $text: { $search: q }};
     }
-    const sort = JSON.parse(req.headers.sort);
+    const sort = q ? {} : JSON.parse(req.headers.sort);
     const tags = JSON.parse(req.headers.tags);
     if (tags.length) {
         find['tags'] = { $all: tags };

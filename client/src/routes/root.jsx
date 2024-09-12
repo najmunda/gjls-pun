@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useLoaderData, useSubmit } from 'react-router-dom';
 import Header from '../Header.jsx';
 import SideCards from '../SideCards.jsx';
@@ -10,9 +10,9 @@ export async function loader({ request }) {
   // Set request
   const url = new URL(request.url);
   const q = url.searchParams.get('q');
-  const isDesc = url.searchParams.get('isDesc');
-  const sortBy = url.searchParams.get('sortBy');
-  const sort = { [sortBy || "num"]: isDesc ? -1 : 1 };
+  const isDesc = q ? false : url.searchParams.get('isDesc');
+  const sortBy = q ? '' : url.searchParams.get('sortBy');
+  const sort = q ? {} : { [sortBy || "num"]: isDesc ? -1 : 1 };
   const choosedTags = url.searchParams.getAll('tags');
   const req = new Request(`http://localhost:5050/episodes/`, {
     headers: { q: JSON.stringify(q), sort: JSON.stringify(sort), tags: JSON.stringify(choosedTags) },
@@ -45,7 +45,10 @@ export default function Root() {
 
   function handleSubmit(event) {
     const formData = new FormData(document.getElementById('side-form'));
-    formData.append('q', document.getElementById('q').value);
+    if (document.getElementById('q').value) {
+      formData.append('q', document.getElementById('q').value);
+      formData.delete('sortBy');
+    }
     submit(formData);
     event.preventDefault();
   }
@@ -54,7 +57,7 @@ export default function Root() {
     <>
       <Header handleSubmit={handleSubmit} handleSideToggle={handleSideToggle}/>
       <main className='px-8 sm:px-16 flex-1 py-3 w-full grid grid-cols-3 gap-4 relative'>
-        <div className='col-span-3 md:col-span-2 flex flex-col gap-2'>
+        <div className='col-span-3 md:col-span-2 flex flex-col gap-4'>
           {episodes.length ?
             episodes.map(episode => (
               <EpisodeCard key={episode._id} episode={episode} handleDetailButton={handleDetailButton} cardState={cardOpenedId == episode._id ? 'open' : ''}/>

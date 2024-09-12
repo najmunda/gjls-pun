@@ -5,6 +5,9 @@
 - Sort by popular, title and episode
 - Filter with tags
 
+# This Commit Change
+
+
 # Front (React)
 - [ ] MVP
     - [v] Header
@@ -14,6 +17,7 @@
             - [v] Kalau tidak ada episode ?
     - [v] Side Card
         - [v] Hide on mobile
+        - [v] Hide sort part on search
         - [v] Toggle on mobile
     - [v] Sort
         - [v] FE
@@ -34,14 +38,16 @@
             - [v] Sync with sidecard form
             - [v] Hide on mobile
             - [v] Toggle on mobile
-            - [ ] Sync sidecard and search
-        - [ ] BE
-            - [ ] /Search path (no sort)
+            - [v] Sync sidecard and search     
     - [ ] Contribute Form
     - [ ] About
 - [v] Dark Mode
 - [v] Screen Responsive
+- [ ] Loading
 - [ ] No Mouse Access
+    - [ ] Episode Card tab as hover
+    - [ ] Desc & Reset Button
+    - [ ] Label
 - [ ] Screen Reader Compability
 
 # Deploy
