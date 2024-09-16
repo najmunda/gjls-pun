@@ -1,5 +1,3 @@
-import { useLoaderData } from "react-router-dom";
-
 function EpisodeCard({episode, handleDetailButton, cardState}) {
   return cardState == 'open' ? (
     <div className="w-full h-fit p-3 flex flex-col gap-1 relative border shadow-[3px_3px_black] dark:shadow-[3px_3px_white]">

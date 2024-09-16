@@ -30,7 +30,8 @@
                     - [v] Title
     - [v] Tags
         - [v] FE
-        - [v] BE
+        - [ ] BE
+            - [ ] Reset Button
     - [v] Search
         - [v] FE
             - [v] Try Delete state
@@ -39,6 +40,14 @@
             - [v] Hide on mobile
             - [v] Toggle on mobile
             - [v] Sync sidecard and search     
+    - [ ] Pagination
+        - [ ] FE
+            - [v] UI
+        - [v] BE
+        - [ ] Sync FE & BE
+            - [v] On start
+            - [v] Sidecard
+            - [ ] Keep query when page change
     - [ ] Contribute Form
     - [ ] About
 - [v] Dark Mode
@@ -49,6 +58,7 @@
     - [ ] Desc & Reset Button
     - [ ] Label
 - [ ] Screen Reader Compability
+- [ ] Comment Code
 
 # Deploy
 
@@ -64,8 +74,12 @@
 - Abstrak - str
 - Kosakata - array
 
+# Forms
+1. Search (q)
+2. Sort and Tag
+3. Pagination (pageindex)
+
 # Next Idea
 - Sorted by most clicked
 - Page for funny word/sentence
 - Fuzzy search (no sorting, yes label)
-- Pagination
