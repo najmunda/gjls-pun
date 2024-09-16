@@ -40,14 +40,18 @@
             - [v] Hide on mobile
             - [v] Toggle on mobile
             - [v] Sync sidecard and search     
-    - [ ] Pagination
-        - [ ] FE
+    - [v] Pagination
+        - [v] FE
             - [v] UI
         - [v] BE
-        - [ ] Sync FE & BE
+        - [v] Sync FE & BE
             - [v] On start
             - [v] Sidecard
-            - [ ] Keep query when page change
+            - [v] Keep query when page change
+    - [ ] Forms adapt (update/replace) by priority
+        - [ ] Search
+        - [ ] Sort & Tag
+        - [v] Pagination
     - [ ] Contribute Form
     - [ ] About
 - [v] Dark Mode

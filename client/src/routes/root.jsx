@@ -16,7 +16,6 @@ export async function loader({ request }) {
   const sort = q ? {} : { [sortBy || "num"]: isDesc ? -1 : 1 };
   const choosedTags = url.searchParams.getAll('tags');
   const pageIndex = url.searchParams.get('pageIndex') || 1;
-  console.log({ q: JSON.stringify(q), sort: JSON.stringify(sort), tags: JSON.stringify(choosedTags), pageindex: JSON.stringify(pageIndex)});
   const req = new Request(`http://localhost:5050/episodes/`, {
     headers: { q: JSON.stringify(q), sort: JSON.stringify(sort), tags: JSON.stringify(choosedTags), pageindex: JSON.stringify(pageIndex)},
   });
@@ -50,12 +49,11 @@ export default function Root() {
   
   function handleSubmit(event) {
     const formData = new FormData(document.getElementById('side-form'));
-    console.log(formData.values);
     if (document.getElementById('q').value) {
       formData.append('q', document.getElementById('q').value);
       formData.delete('sortBy');
     }
-    formData.append('pageIndex', pages > 1 ? document.getElementById('pageIndex').value : 1);
+    //formData.append('pageIndex', pages > 1 ? document.getElementById('pageIndex').value : 1);
     submit(formData);
     event.preventDefault();
   }
