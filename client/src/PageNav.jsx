@@ -10,6 +10,7 @@ function PageNav({ className }) {
   function handlePageNav(num) {
     searchParams.set('pageIndex', pageIndex + num);
     setSearchParams(searchParams);
+    //setCardOpenedId(0);
   }
 
   return pages > 1 && pageIndex <= pages ? (

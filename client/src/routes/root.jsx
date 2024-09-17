@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLoaderData, useSubmit } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import Header from '../Header.jsx';
 import SideCards from '../SideCards.jsx';
 import EpisodeCard from '../EpisodeCard.jsx';
@@ -29,13 +29,12 @@ export async function loader({ request }) {
   // Send request to get tags (UI)
   const tags = await (await fetch(`http://localhost:5050/tags/`)).json();
 
-  return { q, isDesc, sortBy, tags, choosedTags, pageIndex, episodes, pages };
+  return { tags, episodes, pages };
 }
 
 export default function Root() {
 
-  const { episodes, pages } = useLoaderData();
-  const submit = useSubmit();
+  const { episodes } = useLoaderData();
   
   const [cardOpenedId, setCardOpenedId] = useState(0);
   function handleDetailButton(eps_id) {
@@ -46,21 +45,10 @@ export default function Root() {
   function handleSideToggle() {
     setIsSideOpen(!isSideOpen);
   }
-  
-  function handleSubmit(event) {
-    const formData = new FormData(document.getElementById('side-form'));
-    if (document.getElementById('q').value) {
-      formData.append('q', document.getElementById('q').value);
-      formData.delete('sortBy');
-    }
-    //formData.append('pageIndex', pages > 1 ? document.getElementById('pageIndex').value : 1);
-    submit(formData);
-    event.preventDefault();
-  }
 
   return (
     <>
-      <Header handleSubmit={handleSubmit} handleSideToggle={handleSideToggle}/>
+      <Header handleSideToggle={handleSideToggle} setCardOpenedId={setCardOpenedId}/>
       <main className='px-8 sm:px-16 flex-1 py-3 w-full grid grid-cols-3 gap-4 relative overflow-y-scroll'>
         <div className='col-span-3 md:col-span-2 flex flex-col gap-4'>
           {episodes.length ?
@@ -69,13 +57,13 @@ export default function Root() {
             )) : (
               <div className="w-full h-fit py-7 flex flex-col items-center gap-3 relative border shadow-[3px_3px_black] dark:shadow-[3px_3px_white]">
                 <p className='text-8xl font-extrabold'>:(</p>
-                <p className='text-xl font-bold'>Belum ada episode pada database itu pun.</p>
+                <p className='text-xl text-center font-bold'>Belum ada episode pada database itu pun.</p>
               </div>
             )
           }
-          <PageNav handleSubmit={handleSubmit}/>
+          <PageNav/>
         </div>
-        <SideCards isSideOpen={isSideOpen} handleSubmit={handleSubmit} setCardOpenedId={setCardOpenedId}/>
+        <SideCards isSideOpen={isSideOpen}/>
       </main>
       <Links className='px-8 sm:px-16 py-3 flex col-span-3 md:hidden border-t border-inherit'/>
     </>

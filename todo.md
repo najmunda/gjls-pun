@@ -6,6 +6,9 @@
 - Filter with tags
 
 # This Commit Change
+- All form sync with searchparam (x loaderdata)
+- Fix side card form (internal submit)
+- URL adapt form priorities (search, side, page)
 
 
 # Front (React)
@@ -15,6 +18,7 @@
     - [v] Episode Card
         - [v] Detail
             - [v] Kalau tidak ada episode ?
+        - [ ] Close all card when query change (use state and distribute setter OR use normal variable)
     - [v] Side Card
         - [v] Hide on mobile
         - [v] Hide sort part on search
@@ -28,10 +32,11 @@
                     - [v] Sync URL - UI
                     - [v] Episode
                     - [v] Title
-    - [v] Tags
+    - [ ] Tags
         - [v] FE
-        - [ ] BE
-            - [ ] Reset Button
+        - [v] BE
+            - [v] Reset Button
+            - [ ] Adapt displayed tags with query data
     - [v] Search
         - [v] FE
             - [v] Try Delete state
@@ -48,9 +53,12 @@
             - [v] On start
             - [v] Sidecard
             - [v] Keep query when page change
-    - [ ] Forms adapt (update/replace) by priority
-        - [ ] Search
-        - [ ] Sort & Tag
+    - [v] Forms update/replace query by priority
+        - [v] Search
+            - [v] Submit button
+            - [v] Reset button (mobile)
+        - [v] Sort
+        - [v] Tag
         - [v] Pagination
     - [ ] Contribute Form
     - [ ] About
