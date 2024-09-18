@@ -7,7 +7,6 @@ router.get("/", async (req, res) => {
     // Pagination
     const pageItem = 10;
     const pageIndex = req.headers.pageindex ? JSON.parse(req.headers.pageindex) : 1;
-
     // Search, sort, and label
     const q = JSON.parse(req.headers.q) ? { $text: { $search: JSON.parse(req.headers.q) }} : {};
     const sort = JSON.stringify(q) == '{}' ? JSON.parse(req.headers.sort) : { 'num': 1 };
@@ -22,6 +21,7 @@ router.get("/", async (req, res) => {
             $facet: {
                 metadata: [{ $count: 'totalEpisodes' }],
                 data: [{ $skip: (pageIndex - 1) * pageItem }, { $limit: pageItem }],
+                tags: [{ $group: { _id: null, alltags: { $push: "$tags" } } }, { $project: { tags: { $reduce: { input: "$alltags", initialValue: [], in: { $setUnion: [ "$$value", "$$this" ] } } } } }],
             },
         },
     ]).toArray();
@@ -31,6 +31,7 @@ router.get("/", async (req, res) => {
             totalPages: results[0].metadata.length ? Math.ceil(results[0].metadata[0].totalEpisodes / 10) : 0,
         },
         data : results[0].data,
+        tags: results[0].tags[0].tags,
     }).status(200);
 });
 

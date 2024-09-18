@@ -24,10 +24,7 @@ export async function loader({ request }) {
   const json = await response.json();
   const pages = json.metadata.totalPages;
   const episodes = json.data;
-
-  // Tags
-  // Send request to get tags (UI)
-  const tags = await (await fetch(`http://localhost:5050/tags/`)).json();
+  const tags = json.tags;
 
   return { tags, episodes, pages };
 }
