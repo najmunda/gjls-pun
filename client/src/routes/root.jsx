@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useSearchParams, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Header from '../Header.jsx';
 import SideCards from '../SideCards.jsx';
@@ -35,10 +35,16 @@ export async function loader({ request }) {
 export default function Root() {
 
   const { episodes } = useLoaderData();
+  const [ prevEpisodes, setPrevEpisodes] = useState(episodes);
   
   const [cardOpenedId, setCardOpenedId] = useState(0);
   function handleDetailButton(eps_id) {
     setCardOpenedId(eps_id);
+  }
+
+  if (episodes !== prevEpisodes) {
+    setPrevEpisodes(episodes);
+    setCardOpenedId(0);
   }
 
   const [isSideOpen, setIsSideOpen] = useState(false);

@@ -6,9 +6,7 @@
 - Filter with tags
 
 # This Commit Change
-- All form sync with searchparam (x loaderdata)
-- Fix side card form (internal submit)
-- URL adapt form priorities (search, side, page)
+- Close all card when query change
 
 
 # Front (React)
@@ -18,7 +16,7 @@
     - [v] Episode Card
         - [v] Detail
             - [v] Kalau tidak ada episode ?
-        - [ ] Close all card when query change (use state and distribute setter OR use normal variable)
+        - [v] Close all card when query change
     - [v] Side Card
         - [v] Hide on mobile
         - [v] Hide sort part on search

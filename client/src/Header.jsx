@@ -25,7 +25,6 @@ function Header({ handleSideToggle }) {
 
   useEffect(() => {
     if (q) {
-      console.log('a');
       setIsSearchOpen(true);
     }
     document.getElementById('q').value = q;
