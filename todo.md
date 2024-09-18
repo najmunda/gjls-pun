@@ -6,8 +6,6 @@
 - Filter with tags
 
 # This Commit Change
-- Close all card when query change
-
 
 # Front (React)
 - [ ] MVP
@@ -30,11 +28,11 @@
                     - [v] Sync URL - UI
                     - [v] Episode
                     - [v] Title
-    - [ ] Tags
+    - [v] Tags
         - [v] FE
         - [v] BE
             - [v] Reset Button
-            - [ ] Adapt displayed tags with query data
+            - [v] Adapt displayed tags with query data
     - [v] Search
         - [v] FE
             - [v] Try Delete state
