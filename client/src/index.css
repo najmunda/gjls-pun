@@ -8,8 +8,8 @@ body * {
   color: inherit;
 }
 
-html.dark body {
-  filter: blur(0.6px) url("/noise.svg#grain");
+body dialog {
+  filter: url('/noise.svg#grain') blur(0.6px) contrast(120%) brightness(120%);
 }
 
 input[type="search"]::-webkit-search-decoration,

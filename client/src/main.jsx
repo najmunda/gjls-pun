@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import './index.css';
 import Root, { loader as rootLoader } from "./routes/root.jsx";
+import AboutDialog from './AboutDialog.jsx';
 import ErrorPage from './error-page.jsx'
 
 // Dark Mode (local storage)
@@ -20,7 +21,21 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root/>,
     loader: rootLoader,
+    shouldRevalidate: ({ nextUrl }) => {
+      if (nextUrl.pathname == '/about') {
+        return false;
+      }
+      return true;
+    },
     errorElement: <ErrorPage/>,
+    children: [
+      {
+        path: "about",
+        element: (
+          <AboutDialog/>
+        ),
+      },
+    ],
   },
 ]);
 

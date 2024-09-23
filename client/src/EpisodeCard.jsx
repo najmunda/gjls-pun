@@ -1,14 +1,19 @@
 function EpisodeCard({episode, handleDetailButton, cardState}) {
+
+  function handleEpisodeAnchor(event) {
+    event.stopPropagation();
+  }
+
   return cardState == 'open' ? (
-    <div className="w-full h-fit p-3 flex flex-col gap-1 relative border shadow-[3px_3px_black] dark:shadow-[3px_3px_white]">
+    <div onClick={(e) => handleDetailButton(e, 0)} className="w-full h-fit p-3 flex flex-col gap-1 relative border border-x-8 cursor-pointer">
       <div className="flex gap-4 justify-between items-stretch">
         <div>
-          <p className="text-xl font-bold">{episode.title}</p>
+          <p className="text-xl font-bold leading-none">{episode.title}</p>
           <p>Episode {episode.num}</p>
         </div>
         <div className="flex gap-3 items-start">
-          <a href={episode.link} target='_blank' rel='noreferrer noopener' className="material-icons-outlined text-2xl">open_in_new</a>
-          <button type='button' onClick={() => handleDetailButton(0)} className="material-icons-outlined text-2xl">info</button>
+          <a onClick={handleEpisodeAnchor} href={episode.link} target='_blank' rel='noreferrer noopener' className="material-icons-outlined text-2xl leading-none">open_in_new</a>
+          <button type='button' onClick={(e) => handleDetailButton(e, 0)} className="material-icons-outlined text-2xl leading-none">info</button>
         </div>
       </div>
       <div>
@@ -53,14 +58,14 @@ function EpisodeCard({episode, handleDetailButton, cardState}) {
       </div>
     </div>
   ) : (
-    <div className="group w-full h-fit p-3 flex justify-between items-stretch gap-4 relative border shadow-[3px_3px_black] dark:shadow-[3px_3px_white]">
-      <div className="flex gap-4 items-center overflow-hidden">
-        <p className="w-5 text-center">{episode.num}</p>
-        <p className="text-xl font-bold truncate">{episode.title}</p>
+    <div onClick={(e) => handleDetailButton(e, episode._id)} className="group w-full h-fit p-3 flex justify-between items-stretch gap-3 relative border-y-2 border-x-8 cursor-pointer">
+      <div className="flex gap-3 items-center overflow-hidden">
+        <p className="w-fit px-1 text-center border rounded">{episode.num}</p>
+        <p className="text-xl text-center font-bold truncate leading-none">{episode.title}</p>
       </div>
-      <div className="px-3 flex gap-3 items-center absolute end-0 invisible group-hover:visible bg-inherit">
-        <a href={episode.link} target='_blank' rel='noreferrer noopener' className="material-icons-outlined text-2xl">open_in_new</a>
-        <button type='button' onClick={() => handleDetailButton(episode._id)} className="material-icons-outlined text-2xl">info</button>
+      <div className="hidden gap-3 items-center group-hover:flex group-active:flex bg-inherit">
+        <a onClick={handleEpisodeAnchor} href={episode.link} target='_blank' rel='noreferrer noopener' className="material-icons-outlined text-2xl leading-none">open_in_new</a>
+        <button type='button' onClick={(e) => handleDetailButton(e, episode._id)} className="material-icons-outlined text-2xl leading-none">info</button>
       </div>
     </div>
   )

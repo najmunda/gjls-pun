@@ -1,5 +1,5 @@
-import { useSearchParams, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useState } from 'react';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import Header from '../Header.jsx';
 import SideCards from '../SideCards.jsx';
 import EpisodeCard from '../EpisodeCard.jsx';
@@ -26,7 +26,7 @@ export async function loader({ request }) {
   const episodes = json.data;
   const tags = json.tags;
 
-  return { tags, episodes, pages };
+  return { url, tags, episodes, pages };
 }
 
 export default function Root() {
@@ -35,8 +35,9 @@ export default function Root() {
   const [ prevEpisodes, setPrevEpisodes] = useState(episodes);
   
   const [cardOpenedId, setCardOpenedId] = useState(0);
-  function handleDetailButton(eps_id) {
+  function handleDetailButton(e, eps_id) {
     setCardOpenedId(eps_id);
+    e.stopPropagation();
   }
 
   if (episodes !== prevEpisodes) {
@@ -52,8 +53,8 @@ export default function Root() {
   return (
     <>
       <Header handleSideToggle={handleSideToggle} setCardOpenedId={setCardOpenedId}/>
-      <main className='px-8 sm:px-16 flex-1 py-3 w-full grid grid-cols-3 gap-4 relative overflow-y-scroll'>
-        <div className='col-span-3 md:col-span-2 flex flex-col gap-4'>
+      <main className='px-8 sm:px-16 flex-1 py-3 w-full grid grid-cols-3 gap-3 relative overflow-y-scroll'>
+        <div className='col-span-3 md:col-span-2 flex flex-col gap-2'>
           {episodes.length ?
             episodes.map(episode => (
               <EpisodeCard key={episode._id} episode={episode} handleDetailButton={handleDetailButton} cardState={cardOpenedId == episode._id ? 'open' : ''}/>
@@ -69,6 +70,7 @@ export default function Root() {
         <SideCards isSideOpen={isSideOpen}/>
       </main>
       <Links className='px-8 sm:px-16 py-3 flex col-span-3 md:hidden border-t border-inherit'/>
+      <Outlet/>
     </>
   )
 }

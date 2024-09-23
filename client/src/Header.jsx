@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Form, useSearchParams } from 'react-router-dom';
+import { Form, useLoaderData, useSearchParams } from 'react-router-dom';
 
 function Header({ handleSideToggle }) {
 
@@ -16,7 +16,8 @@ function Header({ handleSideToggle }) {
   }
 
   const [ searchParams, setSearchParams ] = useSearchParams();
-  const q = searchParams.get('q') || '';
+  const { url } = useLoaderData();
+  const q = url.searchParams.get('q') || '';
 
   const [isSearchOpen, setIsSearchOpen] = useState(q ? true : false);
   function handleSearchToggle() {
@@ -48,7 +49,7 @@ function Header({ handleSideToggle }) {
             close
         </button>
         {/* Search for title/word bank */}
-        <input name='q' id='q' type="search" defaultValue={q} autoComplete='off' autoCorrect='off' className='w-full p-0 bg-inherit border-0 focus:ring-0 active:ring-0' />
+        <input name='q' id='q' type="search" defaultValue={q} autoComplete='off' autoCorrect='off' className='w-full font-semibold p-0 bg-inherit border-0 focus:ring-0 active:ring-0' />
         <button type='submit' className="material-icons-outlined text-xl px-1">search</button>
       </Form>
       <div className='flex items-center gap-3'>

@@ -6,6 +6,9 @@
 - Filter with tags
 
 # This Commit Change
+- Change episode card display
+- About modal
+- Fix error page (text-center)
 
 # Front (React)
 - [ ] MVP
@@ -14,6 +17,8 @@
     - [v] Episode Card
         - [v] Detail
             - [v] Kalau tidak ada episode ?
+        - [v] Click card to open & close detail
+        - [v] Align center button
         - [v] Close all card when query change
     - [v] Side Card
         - [v] Hide on mobile
@@ -56,8 +61,23 @@
         - [v] Sort
         - [v] Tag
         - [v] Pagination
+    - [v] About Dialog
+        - [v] Attribute
+        - [v] Back to previous url on close
+        - [v] Preserve background when go to '/about'
+            - [v] Episode
+            - [v] Header
+            - [v] Sidecard
+            - [v] Pagenav
     - [ ] Contribute Form
-    - [ ] About
+        - [ ] Route
+        - [ ] FE
+            - [ ] Form
+            - [ ] Form Validation
+        - [ ] BE
+- [ ] Server
+    - [ ] Hide IP (expose development on network to try mobile)
+    - [ ] try catch
 - [v] Dark Mode
 - [v] Screen Responsive
 - [ ] Loading

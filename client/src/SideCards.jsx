@@ -7,13 +7,13 @@ function SideCards({ isSideOpen }) {
 
   const submit = useSubmit();
 
-  const { tags } = useLoaderData();
+  const { url, tags } = useLoaderData();
 
   const [ searchParams, setSearchParams ] = useSearchParams();
-  const q = searchParams.get('q') || '';
-  const isDesc = searchParams.get('isDesc') || '';
-  const sortBy = searchParams.get('sortBy') || 'num';
-  const choosedTags = searchParams.getAll('tags') || [];
+  const q = url.searchParams.get('q') || '';
+  const isDesc = url.searchParams.get('isDesc') || '';
+  const sortBy = url.searchParams.get('sortBy') || 'num';
+  const choosedTags = url.searchParams.getAll('tags') || [];
   
   function handleTagResetButton() {
     searchParams.delete('tags');
