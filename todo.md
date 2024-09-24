@@ -6,9 +6,8 @@
 - Filter with tags
 
 # This Commit Change
-- Change episode card display
-- About modal
-- Fix error page (text-center)
+- Use textscore on search
+- 
 
 # Front (React)
 - [ ] MVP
@@ -76,8 +75,11 @@
             - [ ] Form Validation
         - [ ] BE
 - [ ] Server
+    - [v] search bar
+        - [v] Use text score descending
+        - [v] Check for 0 textscore
     - [ ] Hide IP (expose development on network to try mobile)
-    - [ ] try catch
+    - [v] try catch
 - [v] Dark Mode
 - [v] Screen Responsive
 - [ ] Loading
