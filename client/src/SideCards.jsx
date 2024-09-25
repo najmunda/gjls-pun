@@ -11,7 +11,7 @@ function SideCards({ isSideOpen }) {
 
   const [ searchParams, setSearchParams ] = useSearchParams();
   const q = url.searchParams.get('q') || '';
-  const isDesc = url.searchParams.get('isDesc') || '';
+  const isDesc = url.searchParams.get('isDesc') ? true : false;
   const sortBy = url.searchParams.get('sortBy') || 'num';
   const choosedTags = url.searchParams.getAll('tags') || [];
   
@@ -39,7 +39,7 @@ function SideCards({ isSideOpen }) {
             <div className='flex items-center justify-between'>
               <p className='flex items-center gap-2 text-xl font-bold'><span className="material-icons-outlined">sort</span>Urut berdasar</p>
               <div className='flex items-center px-3 py-1 border focus-within:outline focus-within:outline-1 focus-within:outline-inherit'>
-                <input type="checkbox" checked={isDesc == 'on' ? true : false} name="isDesc" id="isDesc" readOnly className='peer opacity-0 absolute'/>
+                <input type="checkbox" checked={isDesc ? true : false} name="isDesc" id="isDesc" value={true} readOnly className='peer opacity-0 absolute'/>
                 <label htmlFor="isDesc" className='flex items-center gap-1 text-sm peer-focus:*:font-bold'>
                   <span className="material-icons-outlined text-base">{isDesc ? 'trending_down' : 'trending_up'}</span>
                   <span className='md:max-lg:hidden'>{isDesc ? 'Menurun' : 'Menaik'}</span>

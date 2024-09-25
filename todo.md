@@ -71,7 +71,12 @@
             - [v] Use text score descending
             - [v] Check for 0 textscore
         - [v] try catch
-        - [ ] tidy up front side header fetch
+        - [v] tidy up front side header fetch
+            - [v] q
+            - [v] sortBy
+            - [v] isDesc
+            - [v] tags
+            - [v] pageIndex
 - [v] Dark Mode
 - [v] Screen Responsive
 - [v] Loading

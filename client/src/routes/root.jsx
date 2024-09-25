@@ -7,17 +7,20 @@ import PageNav from '../PageNav.jsx';
 import Links from '../Links.jsx';
 
 export async function loader({ request }) {
-  //SORT & FILTER
   // Set request
   const url = new URL(request.url);
-  const q = url.searchParams.get('q');
-  const isDesc = q ? false : url.searchParams.get('isDesc');
-  const sortBy = q ? '' : url.searchParams.get('sortBy');
-  const sort = q ? {} : { [sortBy || "num"]: isDesc ? -1 : 1 };
+  const q = url.searchParams.get('q') || '';
+  const isDesc = url.searchParams.get('isDesc') || false;
+  const sortBy = url.searchParams.get('sortBy') || 'num';
   const choosedTags = url.searchParams.getAll('tags');
   const pageIndex = url.searchParams.get('pageIndex') || 1;
   const req = new Request(`http://localhost:5050/episodes/`, {
-    headers: { q: JSON.stringify(q), sort: JSON.stringify(sort), tags: JSON.stringify(choosedTags), pageindex: JSON.stringify(pageIndex)},
+    headers: { 
+      q: JSON.stringify(q),
+      isdesc: JSON.stringify(isDesc),
+      sortby: JSON.stringify(sortBy),
+      tags: JSON.stringify(choosedTags),
+      pageindex: JSON.stringify(pageIndex)},
   });
   // Send request to get episodes
   const response = await fetch(req);
