@@ -38,15 +38,15 @@ function SideCards({ isSideOpen }) {
           <>
             <div className='flex items-center justify-between'>
               <p className='flex items-center gap-2 text-xl font-bold'><span className="material-icons-outlined">sort</span>Urut berdasar</p>
-              <div className='flex items-center px-3 py-1 border focus:ring-0 active:ring-0'>
-                <input type="checkbox" checked={isDesc == 'on' ? true : false} name="isDesc" id="isDesc" readOnly className='opacity-0 absolute'/>
-                <label htmlFor="isDesc" className='flex items-center gap-1 text-sm'>
+              <div className='flex items-center px-3 py-1 border focus-within:outline focus-within:outline-1 focus-within:outline-inherit'>
+                <input type="checkbox" checked={isDesc == 'on' ? true : false} name="isDesc" id="isDesc" readOnly className='peer opacity-0 absolute'/>
+                <label htmlFor="isDesc" className='flex items-center gap-1 text-sm peer-focus:*:font-bold'>
                   <span className="material-icons-outlined text-base">{isDesc ? 'trending_down' : 'trending_up'}</span>
                   <span className='md:max-lg:hidden'>{isDesc ? 'Menurun' : 'Menaik'}</span>
                 </label>
               </div>
             </div>
-            <select name="sortBy" id="sortBy" value={sortBy || ""} className='px-3 py-1 border focus:ring-0 active:ring-0' readOnly>
+            <select name="sortBy" id="sortBy" value={sortBy || ""} className='px-3 py-1 border focus:ring-0 focus:border-inherit focus:outline-1 focus:outline focus:outline-inherit' readOnly>
               <option value="num">Episode</option>
               <option value="title">Judul</option>
               {/*<option value="sortTrend">Trend</option>*/}
@@ -56,21 +56,21 @@ function SideCards({ isSideOpen }) {
         {/* Tags*/}
         <div className='flex items-center justify-between'>
           <p className='flex items-center gap-2 text-xl font-bold'><span className="material-icons-outlined">sell</span>Sortir label</p>
-          <button type="button" onClick={handleTagResetButton} className='flex items-center gap-1 px-3 py-1 text-sm border focus:ring-0 active:ring-0'>
-            <span className="material-icons-outlined text-base">delete</span>
-            <span className='md:max-lg:hidden'>Reset</span>
+          <button type="button" onClick={handleTagResetButton} className='group flex items-center gap-1 px-3 py-1 text-sm border focus:outline focus:outline-1 focus:outline-inherit'>
+            <span className="material-icons-outlined text-base group-focus:font-bold">delete</span>
+            <span className='md:max-lg:hidden group-focus:font-bold'>Reset</span>
           </button>
         </div>
         <ul className='flex gap-1 flex-wrap justify-center text-xs'>
           {choosedTags.map((tag) => (
-            <li key={tag} className='p-2 border bg-neutral-900 text-neutral-200 dark:bg-white dark:text-neutral-800'>
+            <li key={tag} className='p-2 border bg-neutral-900 text-neutral-200 dark:bg-white dark:text-neutral-800 focus-within:outline focus-within:outline-1 focus-within:outline-inherit focus-within:font-bold'>
               <input type="checkbox" checked={true} value={tag} name="tags" id={tag} className='opacity-0 absolute' readOnly/>
               <label htmlFor={tag}>{tag}</label>
             </li>
           ))}
           {tags.map((tag) => {
             return choosedTags.includes(tag) || (
-              <li key={tag} className='p-2 border'>
+              <li key={tag} className='p-2 border focus-within:outline focus-within:outline-1 focus-within:outline-inherit focus-within:font-bold'>
                 <input type="checkbox" checked={false} value={tag} name="tags" id={tag} className='opacity-0 absolute' readOnly/>
                 <label htmlFor={tag}>{tag}</label>
               </li>

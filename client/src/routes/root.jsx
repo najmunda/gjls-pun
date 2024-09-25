@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData, useNavigation } from 'react-router-dom';
 import Header from '../Header.jsx';
 import SideCards from '../SideCards.jsx';
 import EpisodeCard from '../EpisodeCard.jsx';
@@ -50,22 +50,32 @@ export default function Root() {
     setIsSideOpen(!isSideOpen);
   }
 
+  const navigation = useNavigation();
+
   return (
     <>
       <Header handleSideToggle={handleSideToggle} setCardOpenedId={setCardOpenedId}/>
       <main className='px-8 sm:px-16 flex-1 py-3 w-full grid grid-cols-3 gap-3 relative overflow-y-scroll'>
-        <div className='col-span-3 md:col-span-2 flex flex-col gap-2'>
-          {episodes.length ?
-            episodes.map(episode => (
-              <EpisodeCard key={episode._id} episode={episode} handleDetailButton={handleDetailButton} cardState={cardOpenedId == episode._id ? 'open' : ''}/>
-            )) : (
+        <div className='col-span-3 md:col-span-2 flex flex-col items-center gap-2'>
+          {navigation.state === 'loading' ?
+            <span className="material-icons-outlined text-4xl text-center animate-spin">refresh</span>
+          : episodes.length ? 
+            (
+              <>
+                {
+                  episodes.map(episode => (
+                    <EpisodeCard key={episode._id} episode={episode} handleDetailButton={handleDetailButton} cardState={cardOpenedId == episode._id ? 'open' : ''}/>
+                  ))
+                }
+                <PageNav/>
+              </>
+            ) : (
               <div className="w-full h-fit py-7 flex flex-col items-center gap-3 relative border shadow-[3px_3px_black] dark:shadow-[3px_3px_white]">
                 <p className='text-8xl font-extrabold'>:(</p>
                 <p className='text-xl text-center font-bold'>Belum ada episode pada database itu pun.</p>
               </div>
-            )
+            )   
           }
-          <PageNav/>
         </div>
         <SideCards isSideOpen={isSideOpen}/>
       </main>

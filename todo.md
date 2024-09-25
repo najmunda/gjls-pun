@@ -6,8 +6,6 @@
 - Filter with tags
 
 # This Commit Change
-- Use textscore on search
-- 
 
 # Front (React)
 - [ ] MVP
@@ -68,26 +66,21 @@
             - [v] Header
             - [v] Sidecard
             - [v] Pagenav
-    - [ ] Contribute Form
-        - [ ] Route
-        - [ ] FE
-            - [ ] Form
-            - [ ] Form Validation
-        - [ ] BE
-- [ ] Server
-    - [v] search bar
-        - [v] Use text score descending
-        - [v] Check for 0 textscore
-    - [ ] Hide IP (expose development on network to try mobile)
-    - [v] try catch
+    - [ ] Server
+        - [v] search bar
+            - [v] Use text score descending
+            - [v] Check for 0 textscore
+        - [v] try catch
+        - [ ] tidy up front side header fetch
 - [v] Dark Mode
 - [v] Screen Responsive
-- [ ] Loading
-- [ ] No Mouse Access
-    - [ ] Episode Card tab as hover
-    - [ ] Desc & Reset Button
-    - [ ] Label
-- [ ] Screen Reader Compability
+- [v] Loading
+- [v] No Mouse Access
+    - [v] Episode Card tab as hover
+        - [v] Closed
+        - [v] Opened
+    - [v] UI
+- [ ] Add data
 - [ ] Comment Code
 
 # Deploy
@@ -112,4 +105,4 @@
 # Next Idea
 - Sorted by most clicked
 - Page for funny word/sentence
-- Fuzzy search (no sorting, yes label)
+- Screen Reader Compability
