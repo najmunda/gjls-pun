@@ -21,8 +21,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root/>,
     loader: rootLoader,
-    shouldRevalidate: ({ nextUrl }) => {
-      if (nextUrl.pathname == '/about') {
+    shouldRevalidate: ({ currentUrl, nextUrl }) => {
+      if (nextUrl.pathname == '/about' || currentUrl.pathname == '/about') {
         return false;
       }
       return true;

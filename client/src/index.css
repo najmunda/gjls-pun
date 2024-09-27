@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  opacity: 0; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #172554; 
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #ffffff; 
+}
+
 body * {
   background-color: inherit;
   border-color: inherit;
@@ -9,7 +26,7 @@ body * {
 }
 
 body dialog {
-  filter: url('/noise.svg#grain') blur(0.6px) contrast(120%) brightness(120%);
+  filter: url('/noise.svg#grain') blur(0.7px) contrast(120%) brightness(120%);
 }
 
 input[type="search"]::-webkit-search-decoration,

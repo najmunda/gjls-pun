@@ -66,7 +66,7 @@
             - [v] Header
             - [v] Sidecard
             - [v] Pagenav
-    - [ ] Server
+    - [v] Server
         - [v] search bar
             - [v] Use text score descending
             - [v] Check for 0 textscore
@@ -85,6 +85,10 @@
         - [v] Closed
         - [v] Opened
     - [v] UI
+- [ ] App status
+    - [ ] No episode in db
+    - [ ] No episode on query
+    - [ ] Connection error
 - [ ] Add data
 - [ ] Comment Code
 
@@ -93,7 +97,7 @@
 # Pages
 - Index (/)
     - Aside : Sort and Tags
-- Search (/search)
+- Search (/?q)
     - Aside : Tags
 
 # Search Criteria

@@ -32,7 +32,7 @@ function Header({ handleSideToggle }) {
   }, [q]);
 
   return (
-    <header className='text-inherit w-full px-8 sm:px-16 py-3 flex justify-between items-center gap-4 bg-inherit border-b border-inherit z-10'>
+    <header className='text-inherit w-full px-10 sm:px-20 py-3 flex justify-between items-center gap-4 bg-inherit border-b border-inherit z-10 rounded-t-2xl'>
       <div className={`${isSearchOpen ? 'hidden' : 'flex'} md:flex items-center gap-2`}>
         <span className="material-icons-outlined text-4xl">headphones</span>
         <p className='text-xl font-bold hidden min-[350px]:block'>GJLS PUN!</p>

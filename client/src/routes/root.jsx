@@ -58,7 +58,7 @@ export default function Root() {
   return (
     <>
       <Header handleSideToggle={handleSideToggle} setCardOpenedId={setCardOpenedId}/>
-      <main className='px-8 sm:px-16 flex-1 py-3 w-full grid grid-cols-3 gap-3 relative overflow-y-scroll'>
+      <main className='px-10 sm:px-20 flex-1 py-3 w-full grid grid-cols-3 gap-3 relative overflow-y-auto rounded-b-2xl'>
         <div className='col-span-3 md:col-span-2 flex flex-col items-center gap-2'>
           {navigation.state === 'loading' ?
             <span className="material-icons-outlined text-4xl text-center animate-spin">refresh</span>
@@ -82,7 +82,7 @@ export default function Root() {
         </div>
         <SideCards isSideOpen={isSideOpen}/>
       </main>
-      <Links className='px-8 sm:px-16 py-3 flex col-span-3 md:hidden border-t border-inherit'/>
+      <Links className='px-10 sm:px-20 py-3 flex col-span-3 rounded-b-2xl md:rounded-none md:hidden border-t border-inherit'/>
       <Outlet/>
     </>
   )
