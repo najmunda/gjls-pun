@@ -1,10 +1,10 @@
-//import { useEffect } from 'react';
 import { Form, useLoaderData, useNavigation, useSearchParams, useSubmit } from 'react-router-dom';
+import { useLineStatus } from './utils';
 import Links from './Links';
-//import { tags_data } from './data.js';
 
 function SideCards({ isSideOpen }) {
 
+  const isOnline = useLineStatus();
   const navigation = useNavigation();
   const submit = useSubmit();
 
@@ -40,14 +40,14 @@ function SideCards({ isSideOpen }) {
             <div className='flex items-center justify-between'>
               <p className='flex items-center gap-2 text-xl font-bold'><span className="material-icons-outlined">sort</span>Urut berdasar</p>
               <div className='flex items-center px-3 py-1 border cursor-pointer focus-within:outline focus-within:outline-1 focus-within:outline-inherit'>
-                <input type="checkbox" checked={isDesc ? true : false} name="isDesc" id="isDesc" value={true} readOnly className='peer opacity-0 absolute'/>
+                <input type="checkbox" checked={isDesc ? true : false} disabled={!isOnline} name="isDesc" id="isDesc" value={true} readOnly className='peer opacity-0 absolute'/>
                 <label htmlFor="isDesc" className='flex items-center gap-1 text-sm cursor-pointer peer-focus:*:font-bold'>
                   <span className="material-icons-outlined text-base">{isDesc ? 'trending_down' : 'trending_up'}</span>
                   <span className='md:max-lg:hidden'>{isDesc ? 'Menurun' : 'Menaik'}</span>
                 </label>
               </div>
             </div>
-            <select name="sortBy" id="sortBy" value={sortBy || ""} className='px-3 py-1 border cursor-pointer focus:ring-0 focus:border-inherit focus:outline-1 focus:outline focus:outline-inherit' readOnly>
+            <select name="sortBy" id="sortBy" value={sortBy || ""} disabled={!isOnline} className='px-3 py-1 border cursor-pointer focus:ring-0 focus:border-inherit focus:outline-1 focus:outline focus:outline-inherit' readOnly>
               <option value="num">Episode</option>
               <option value="title">Judul</option>
               {/*<option value="sortTrend">Trend</option>*/}
@@ -67,7 +67,7 @@ function SideCards({ isSideOpen }) {
         {navigation.state === 'loading' ?
             <span className="material-icons-outlined bg-transparent text-3xl text-center animate-spin">refresh</span>
           :
-            tags.length ?
+            isOnline && tags.length ?
                 <ul className='flex gap-1 flex-wrap justify-center text-xs'>
                   {choosedTags.map((tag) => (
                     <li key={tag} className='p-2 border cursor-pointer bg-[#172554] text-neutral-200 dark:bg-white dark:text-neutral-800 focus-within:outline focus-within:outline-1 focus-within:outline-inherit focus-within:font-bold'>

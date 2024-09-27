@@ -85,11 +85,12 @@
         - [v] Closed
         - [v] Opened
     - [v] UI
-- [ ] App status
-    - [ ] No episode in db
-    - [ ] No episode on query
-    - [ ] Connection error
+- [v] App status
+    - [v] No episode in db
+    - [v] No episode on query
+    - [v] Connection off
 - [ ] Add data
+- [ ] Add animation
 - [ ] Comment Code
 
 # Deploy

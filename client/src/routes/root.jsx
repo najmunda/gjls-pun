@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Outlet, useLoaderData, useNavigation } from 'react-router-dom';
+import { useLineStatus } from '../utils.js';
 import Header from '../Header.jsx';
 import SideCards from '../SideCards.jsx';
 import EpisodeCard from '../EpisodeCard.jsx';
@@ -22,20 +23,26 @@ export async function loader({ request }) {
       tags: JSON.stringify(choosedTags),
       pageindex: JSON.stringify(pageIndex)},
   });
-  // Send request to get episodes
-  const response = await fetch(req);
-  const json = await response.json();
-  const pages = json.metadata.totalPages;
-  const episodes = json.data;
-  const tags = json.tags;
-
-  return { url, tags, episodes, pages };
+  try {
+    // Send request to get episodes
+    const response = await fetch(req);
+    const json = await response.json();
+    const pages = json.metadata.totalPages;
+    const episodes = json.data;
+    const tags = json.tags;
+    return { url, tags, episodes, pages };
+  } catch (error) {
+    console.log(error);
+    return { url, tags: [], episodes: [], pages: 0 };
+  }
 }
 
 export default function Root() {
 
-  const { episodes } = useLoaderData();
+  const { episodes, url } = useLoaderData();
   const [ prevEpisodes, setPrevEpisodes] = useState(episodes);
+
+  const q = url.searchParams.get('q') || '';;
   
   const [cardOpenedId, setCardOpenedId] = useState(0);
   function handleDetailButton(e, eps_id) {
@@ -54,13 +61,20 @@ export default function Root() {
   }
 
   const navigation = useNavigation();
+  const isOnline = useLineStatus();
+  console.log('isOnline: ', isOnline);
 
   return (
     <>
       <Header handleSideToggle={handleSideToggle} setCardOpenedId={setCardOpenedId}/>
       <main className='px-10 sm:px-20 flex-1 py-3 w-full grid grid-cols-3 gap-3 relative overflow-y-auto rounded-b-2xl'>
         <div className='col-span-3 md:col-span-2 flex flex-col items-center gap-2'>
-          {navigation.state === 'loading' ?
+          {!isOnline ? (
+            <div className="w-full h-full py-7 flex flex-col justify-center items-center gap-3">
+              <span className="material-icons-outlined text-8xl">wifi_off</span>
+              <p className='text-xl text-center font-bold'>Dirimu pribadi tidak konek ke internet duniawi deh.</p>
+            </div>
+          ) : navigation.state === 'loading' ?
             <span className="material-icons-outlined text-4xl text-center animate-spin">refresh</span>
           : episodes.length ? 
             (
@@ -73,11 +87,16 @@ export default function Root() {
                 <PageNav/>
               </>
             ) : (
-              <div className="w-full h-fit py-7 flex flex-col items-center gap-3 relative border shadow-[3px_3px_black] dark:shadow-[3px_3px_white]">
-                <p className='text-8xl font-extrabold'>:(</p>
-                <p className='text-xl text-center font-bold'>Belum ada episode pada database itu pun.</p>
+              <div className="w-full h-full py-7 flex flex-col justify-center items-center gap-3">
+                {q ? <>
+                  <span className="material-icons-outlined text-8xl">search_off</span>
+                  <p className='text-xl text-center font-bold'>Episode yang kamu cari tidak ditemukannya itu pun.</p>
+                </> : <>
+                  <span className="material-icons-outlined text-8xl">layers_clear</span>
+                  <p className='text-xl text-center font-bold'>Belum ada episode pada database itu pun.</p>
+                </>}
               </div>
-            )   
+            )
           }
         </div>
         <SideCards isSideOpen={isSideOpen}/>
