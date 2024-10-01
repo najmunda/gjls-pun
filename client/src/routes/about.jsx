@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function AboutDialog() {
+function About() {
 
   const navigate = useNavigate()
 
@@ -28,4 +28,4 @@ function AboutDialog() {
   )
 }
 
-export default AboutDialog;
+export default About;

@@ -33,7 +33,7 @@ export async function loader({ request }) {
     return { url, tags, episodes, pages };
   } catch (error) {
     console.log(error);
-    return { url, tags: [], episodes: [], pages: 0 };
+    throw error;
   }
 }
 
@@ -62,7 +62,6 @@ export default function Root() {
 
   const navigation = useNavigation();
   const isOnline = useLineStatus();
-  console.log('isOnline: ', isOnline);
 
   return (
     <>
@@ -75,16 +74,18 @@ export default function Root() {
               <p className='text-xl text-center font-bold'>Dirimu pribadi tidak konek ke internet duniawi deh.</p>
             </div>
           ) : navigation.state === 'loading' ?
-            <span className="material-icons-outlined text-4xl text-center animate-spin">refresh</span>
+            <div className="w-full h-full flex flex-col justify-center items-center">
+              <span className="material-icons-outlined text-4xl text-center animate-spin">refresh</span>
+            </div>
           : episodes.length ? 
             (
               <>
                 {
-                  episodes.map(episode => (
-                    <EpisodeCard key={episode._id} episode={episode} handleDetailButton={handleDetailButton} cardState={cardOpenedId == episode._id ? 'open' : ''}/>
+                  episodes.map((episode, index) => (
+                    <EpisodeCard key={episode._id} index={index} episode={episode} handleDetailButton={handleDetailButton} cardState={cardOpenedId == episode._id ? 'open' : ''}/>
                   ))
                 }
-                <PageNav/>
+                <PageNav episodesLength={episodes.length}/>
               </>
             ) : (
               <div className="w-full h-full py-7 flex flex-col justify-center items-center gap-3">

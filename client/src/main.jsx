@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import './index.css';
 import Root, { loader as rootLoader } from "./routes/root.jsx";
-import AboutDialog from './AboutDialog.jsx';
+import About from './routes/about.jsx';
 import ErrorPage from './error-page.jsx'
 
 // Dark Mode (local storage)
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: (
-          <AboutDialog/>
+          <About/>
         ),
       },
     ],

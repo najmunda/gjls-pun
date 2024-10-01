@@ -90,7 +90,6 @@
     - [v] No episode on query
     - [v] Connection off
 - [ ] Add data
-- [ ] Add animation
 - [ ] Comment Code
 
 # Deploy
